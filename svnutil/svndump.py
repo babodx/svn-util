@@ -77,11 +77,13 @@ def incerese_backup(repo_name, src_path,dest_path,from_revision,to_revision):
 
 def main():
     parser= OptionParser(
-        prog=u"svndump [-f] svn仓库路径 备份目录",usage="%prog",
-        description=u'将{svn仓库路径}下的所有svn库备份到{备份目录}。'+
-                    u'默认为增量备份：根据{备份目录}中已有备份文件的名称中记录的revision和各svn库的当前revision进行增量备份；'+
-                    u'如果{备份目录}中没有某个svn库的备份文件，则自动执行全备份。也可以使用`-f`参数强制执行全备份。'+
-                    u'备份文件的命名规则为{svn库名称}_yyyy-mm-dd_r{start_revision}-{end_revision}.bz2.'
+        # prog=u"svndump [-f] svn仓库路径 备份目录",usage="%prog",
+        # description=u'将{svn仓库路径}下的所有svn库备份到{备份目录}。'+
+        #             u'默认为增量备份：根据{备份目录}中已有备份文件的名称中记录的revision和各svn库的当前revision进行增量备份；'+
+        #             u'如果{备份目录}中没有某个svn库的备份文件，则自动执行全备份。也可以使用`-f`参数强制执行全备份。'+
+        #             u'备份文件的命名规则为{svn库名称}_yyyy-mm-dd_r{start_revision}-{end_revision}.bz2.'
+        prog = 'svndump.py [-f] SVN_REPOs_ROOT DEST_DIR', usage='%prog',
+        description= 'default formmat: {REPO_NAME}_yyyy-mm-dd_r{start_revision}-{end_revision}.bz2'
         )
 
     parser.add_option("-f", dest="full", action="store_true" , default = False, help=u"进行全备份")
