@@ -1,0 +1,16 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+#  _   _       _ _                     _
+# | | | | ___ | | |__  _ __ ___   ___ | | __
+# | |_| |/ _ \| | '_ \| '__/ _ \ / _ \| |/ /
+# |  _  | (_) | | |_) | | | (_) | (_) |   <
+# |_| |_|\___/|_|_.__/|_|  \___/ \___/|_|\_\
+
+import svnutil, sys
+from svnutil import SvnUtil
+
+sa = SubminAdmin(sys.argv)
+success = sa.run()
+if not success:
+        sys.exit(1)
