@@ -87,7 +87,7 @@ def main():
         description= 'default formmat: {REPO_NAME}_yyyy-mm-dd_r{start_revision}-{end_revision}.bz2'
         )
 
-    parser.add_option("-f", dest="full", action="store_true" , default = False, help=u"进行全备份")
+    parser.add_option("-f", dest="full", action="store_true" , default = False, help="FULL backup")
 
 
     (options, args) = parser.parse_args()
@@ -109,7 +109,7 @@ def main():
 
         if(options.full):
             for repo in repo_list:
-                full_backup(src_path + os.sep + repo, dest_path,repo_list.get(repo))
+                full_backup(repo, src_path ,dest_path,repo_list.get(repo))
         else:
             for repo in repo_list:
                 last = last_revision(repo,dest_path)
