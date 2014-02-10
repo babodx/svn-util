@@ -66,13 +66,14 @@ def full_backup(repo_name,root, dest_path,last):
 
 
 def incerese_backup(repo_name, src_path,dest_path,from_revision,to_revision):
-    print u"增量备份svn库："+repo_name+ 'r_'+from_revision+'-'+to_revision
+    from_revision = str(from_revision)
+    to_revision = str(to_revision)
+    print u"增量备份svn库："+repo_name+ 'r_'+str(from_revision)+'-'+str(to_revision)
 
-    file_name = '%s_%s_r%d-%d'%(repo_name,str(datetime.date.today()),from_revision,to_revision)
-    print 'svnadmin dump --deltas '+src_path + os.sep + repo_name + \
-        '-r'+from_revision+':'+ to_revision+ \
-        ' --incremental |bzip2 |tee '+ dest_path+os.sep+file_name + \
-        '.bz2 | md5sum > '+dest_path+os.sep+file_name+'.md5'
+    file_name = '%s_%s_r%s-%s'%(repo_name,str(datetime.date.today()),from_revision,to_revision)
+    os.system('svnadmin dump --deltas '+src_path + os.sep + repo_name + \
+        ' -r'+from_revision+':'+to_revision+' --incremental |bzip2 |tee '+ dest_path+os.sep+file_name + \
+        '.bz2 | md5sum > '+dest_path+os.sep+file_name+'.md5')
 
 
 def main():
